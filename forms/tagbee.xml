@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fields name="metadata">
+        <fieldset name="jmetadata">
+            <field
+                name="tagbee_api_id"
+                type="hidden"
+            />
+        </fieldset>
+    </fields>
+</form>

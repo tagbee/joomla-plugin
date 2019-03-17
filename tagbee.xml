@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="content" method="upgrade">
+    <name>plg_content_tagbee</name>
+    <author>TagBee Team</author>
+    <creationDate>March 2019</creationDate>
+    <copyright>Copyright (C) 2019 Open Source Matters. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <authorEmail>info@tagbee.co</authorEmail>
+    <authorUrl>https://tagbee.co</authorUrl>
+    <version>1.0.0</version>
+    <description>PLG_TAGBEE_XML_DESCRIPTION</description>
+    <files>
+        <filename plugin="tagbee">tagbee.php</filename>
+        <filename>index.html</filename>
+        <folder>forms</folder>
+        <folder>lib</folder>
+    </files>
+    <languages>
+        <language tag="en-GB">en-GB.plg_content_tagbee.ini</language>
+        <language tag="en-GB">en-GB.plg_content_tagbee.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                    name="tagbee_api_key"
+                    type="text"
+                    label="PLG_TAGBEE_API_KEY_PUBLIC_FIELD_LABEL"
+                    description="PLG_TAGBEE_API_KEY_PUBLIC_FIELD_DESC" />
+                <field
+                    name="tagbee_api_key_secret"
+                    type="text"
+                    label="PLG_TAGBEE_API_KEY_SECRETS_FIELD_LABEL"
+                    description="PLG_TAGBEE_API_KEY_SECRETS_FIELD_DESC" />
+            </fieldset>
+        </fields>
+    </config>
+</extension>
