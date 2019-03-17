@@ -41,8 +41,8 @@ final class Tagbee_Client
         $jsonData = json_encode($tagbeeRequest->buildBody());
 
         return new Joomla\Registry\Registry(['headers' => [
-            'Access'  => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8',
+            'Accept'  => 'application/json',
+            'Content-Type'  => 'application/json; charset=utf-8',
             'X-TagBee-PubKey' => $this->apiKey,
             'X-TagBee-Signature' => $this->signature($this->secretKey, $jsonData),
         ]]);
