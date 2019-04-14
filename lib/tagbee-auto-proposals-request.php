@@ -3,6 +3,7 @@
 defined('_JEXEC') or die;
 
 require_once("tagbee-request-interface.php");
+require_once JPATH_SITE . '/components/com_content/helpers/route.php';
 
 final class Tagbee_Auto_Proposals_Request implements Tagbee_Request_Interface
 {
@@ -48,6 +49,11 @@ final class Tagbee_Auto_Proposals_Request implements Tagbee_Request_Interface
      */
     protected $contentMetaKeywords;
 
+    /**
+     * @var string
+     */
+    protected $permalink;
+
     public function __construct($data, $tags, $meta)
     {
         $this->id = !empty($meta['tagbee_api_id']) ? $meta['tagbee_api_id'] : null;
@@ -55,6 +61,7 @@ final class Tagbee_Auto_Proposals_Request implements Tagbee_Request_Interface
         $this->contentTitle = $data->title;
         $this->contentBody = Tagbee_Helper::getArticleBody($data);
         $this->contentCategory = $this->createCategoriesString($data);
+        $this->permalink = $this->getArticleURL($data->id, $data->catid, $data->language);
 
         $this->contentMetaDescription = $data->metadesc;
         $this->contentMetaKeywords = $this->createMetaKeywordsString($data);
@@ -69,5 +76,11 @@ final class Tagbee_Auto_Proposals_Request implements Tagbee_Request_Interface
             'version' => self::TAGBEE_API_VERSION,
             'tags' => $this->buildRequestTags()
         ];
+    }
+
+    protected function getArticleURL($id, $categoryId, $lang)
+    {
+        $url = ContentHelperRoute::getArticleRoute($id, $categoryId, $lang);
+        return JURI::root() . $url;
     }
 }

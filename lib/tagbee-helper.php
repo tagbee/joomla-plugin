@@ -44,4 +44,30 @@ final class Tagbee_Helper
     {
         return $article->introtext . $article->fulltext;
     }
+
+    public static function appendNewTags($article, $responseData)
+    {
+        $tagsInResponse = $responseData['tags'];
+        $tagsInResponseText = array_map(function ($tag) {
+            return $tag['tag'];
+        }, $tagsInResponse);
+
+        $oldTags = self::getArticleTags($article);
+        $oldTagsText = array_map(function ($tag) {
+            return $tag->title;
+        }, $oldTags);
+
+        $newTags = array_filter($tagsInResponseText, function ($tag)  use ($oldTagsText) {
+            return !in_array($tag, $oldTagsText);
+        });
+
+        if (count($newTags)) {
+            $tags = array_merge($tagsInResponseText, $oldTagsText);
+            $article->newTags = array_map(function ($tag) {
+                return "#new#" . $tag;
+            }, $tags);
+        }
+
+        return $article;
+    }
 }

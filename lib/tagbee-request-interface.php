@@ -13,13 +13,17 @@ trait Tagbee_Trait
 {
     protected function buildRequestContent()
     {
+        $joomlaVersion = new \Joomla\CMS\Version();
+
         return [
             'third_party_id' => $this->contentId,
             'title' => $this->contentTitle,
             'body' => $this->contentBody,
             'category' => $this->contentCategory,
             'meta_description' => $this->contentMetaDescription,
-            'meta_keywords' => $this->contentMetaKeywords
+            'meta_keywords' => $this->contentMetaKeywords,
+            'reference' => 'Joomla ' . $joomlaVersion->getShortVersion(),
+            'permalink' => $this->permalink
         ];
     }
 

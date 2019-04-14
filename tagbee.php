@@ -66,11 +66,7 @@ class PlgContentTagbee extends JPlugin
             $remoteId = $data['id'];
 
             $article = Tagbee_Helper::updateMeta($article, 'tagbee_api_id', $remoteId);
-
-            $article->newTags = array_map(function ($tag) {
-                return "#new#" . $tag['tag'];
-            }, $data['tags']);
-
+            $article = Tagbee_Helper::appendNewTags($article, $data);
             $article->store();
 
             $tags = Tagbee_Helper::getArticleTags($article);
