@@ -35,4 +35,7 @@
             </fieldset>
         </fields>
     </config>
+    <updateservers>
+        <server type="extension" name="TagBee Updates">https://tagbee.co/plugins/joomla/updates.xml</server>
+    </updateservers>
 </extension>
