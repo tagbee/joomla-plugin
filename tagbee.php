@@ -62,6 +62,10 @@ class PlgContentTagbee extends JPlugin
                 return;
             }
 
+            if (!isset($response['data'])) {
+                return;
+            }
+
             $data = $response['data'];
             $remoteId = $data['id'];
 
